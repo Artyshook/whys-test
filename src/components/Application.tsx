@@ -1,13 +1,15 @@
 import { Article } from './Article'
-import { Box, Grid, duration } from '@mui/material'
-import { Comment } from './Comment'
+import { Box, Grid } from '@mui/material'
+import { CommentsJSX } from '../helpers/CommentsBlock'
 import { Toggler } from './Toggler'
+import { genericHookContextBuilder } from '../helpers/genericHookContextBuilder'
 import { motion } from 'framer-motion'
 import { theme } from '../helpers/theme'
 import { useAnimation } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import React, { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import { useStartAnimation } from '../helpers/startAnimation'
+import React, { useContext, useEffect, useState } from 'react'
+import styled from 'styled-components'
 
 export type ArticleData = {
   author: string
@@ -21,78 +23,79 @@ export type CommentData = {
   date: string
 }
 
-export const Application = () => {
+const useLogicState = () => {
   const [articleData, setArticleData] = useState({} as ArticleData)
   const [commentData, setCommentData] = useState([] as CommentData[])
   const [moreCommentData, setMoreCommentData] = useState([] as CommentData[])
   const [darkMode, setDarkMode] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [inViewRef, inView] = useInView()
+  const [inViewRef, inView] = useInView({ triggerOnce: true })
   const [inViewRef2, inView2] = useInView()
   const animation = useAnimation()
-  const animation2 = useAnimation()
-  const animation3 = useAnimation()
   const [showMore, setShowMore] = useState(false)
-  console.log('inViewRef2', inViewRef2)
 
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
       // @ts-ignore
-      if (document.__article) {
+      if (window.document.__article) {
         // @ts-ignore
-        setArticleData(document.__article)
+        setArticleData(window.document.__article)
         // @ts-ignore
-        setCommentData(document.__comments)
+        setCommentData(window.document.__comments)
         // @ts-ignore
-        setMoreCommentData(document.__moreComments)
+        setMoreCommentData(window.document.__moreComments)
         setLoading(false)
       }
     }, 1000)
   }, [])
 
-  useEffect(() => {
-    if (inView) {
-      animation.start({
-        y: 0,
-        transition: {
-          delay: 0.1,
-          duration: 0.5,
-          type: 'spring',
-        },
-      })
-    } else if (!inView) {
-      animation.start({ y: '100vw' })
-    }
-  }, [inView])
+  useStartAnimation(inView, animation)
+  useStartAnimation(showMore, animation)
 
-  useEffect(() => {
-    if (inView2) {
-      animation2.start({
-        x: 0,
-        transition: {
-          type: 'easeOut',
-          duration: 1,
-          bounce: 0.3,
-        },
-      })
-    } else if (!inView2) {
-      animation2.start({ x: '1000' })
-    }
-  }, [inView2])
-
-  if (showMore) {
-    animation3.start({
-      x: 0,
-      transition: {
-        type: 'spring',
-        duration: 1,
-        bounce: 0.3,
-      },
-    })
-  } else if (!showMore) {
-    animation3.start({ x: '-100vw' })
+  const handleClick = () => {
+    setShowMore(true)
   }
+
+  return {
+    articleData,
+    commentData,
+    moreCommentData,
+    darkMode,
+    loading,
+    inViewRef,
+    inViewRef2,
+    animation,
+    showMore,
+    handleClick,
+    setDarkMode,
+  }
+}
+
+export const { ContextProvider: AppContextProvider, Context: AppContext } =
+  genericHookContextBuilder(useLogicState)
+
+export const AppUseContext = () => {
+  return (
+    <AppContextProvider>
+      <Application />
+    </AppContextProvider>
+  )
+}
+
+export const Application = () => {
+  const {
+    articleData,
+    commentData,
+    moreCommentData,
+    darkMode,
+    loading,
+    inViewRef,
+    animation,
+    showMore,
+    handleClick,
+    setDarkMode,
+  } = useContext(AppContext)
 
   return (
     <Container darkMode={darkMode}>
@@ -100,46 +103,29 @@ export const Application = () => {
         container
         display={'flex'}
         flexDirection={'column'}
-        minHeight={'100vh'}
+        minHeight={'150vh'}
         justifyContent={'space-between'}
       >
         <Grid item>
           <Toggler darkMode={darkMode} handleClick={() => setDarkMode(!darkMode)} />
         </Grid>
         <Grid item flexGrow={1}>
-          <Article articleData={articleData} loading={loading} />
+          <Article articleData={articleData} loading={loading} darkMode={darkMode} />
         </Grid>
         <div ref={inViewRef}></div>
+        <Grid>
+          <motion.div animate={animation}>
+            <CommentsJSX data={commentData} darkMode={darkMode} />
+          </motion.div>
+          <motion.div animate={animation}>
+            {showMore && <CommentsJSX data={moreCommentData} darkMode={darkMode} />}
+          </motion.div>
+        </Grid>
         <motion.div animate={animation}>
-          <Grid item flexGrow={1} paddingBottom={'10px'}>
-            {commentData.map(comment => (
-              <Comment key={comment.id} commentData={comment} />
-            ))}
-          </Grid>
-          <div ref={inViewRef2}></div>
+          <My_Div>
+            <Button_MyButton onClick={() => handleClick()}>Load More</Button_MyButton>
+          </My_Div>
         </motion.div>
-        <motion.div animate={animation3}>
-          <Button_MyButton onClick={() => setShowMore(true)}>More</Button_MyButton>
-        </motion.div>
-        <motion.div animate={animation}>
-          {showMore ? (
-            <Grid item flexGrow={1} paddingBottom={'10px'}>
-              {moreCommentData.map(comment => (
-                <Comment key={comment.id} commentData={comment} />
-              ))}
-            </Grid>
-          ) : (
-            <div></div>
-          )}
-        </motion.div>
-
-        {/*<motion.div animate={animation}>*/}
-        {/*  <Grid item flexGrow={1} paddingBottom={'10px'}>*/}
-        {/*    {moreCommentData.map(comment => (*/}
-        {/*      <Comment key={comment.id} commentData={comment} />*/}
-        {/*    ))}*/}
-        {/*  </Grid>*/}
-        {/*</motion.div>*/}
       </Grid>
     </Container>
   )
@@ -166,14 +152,22 @@ export const Button_MyButton = styled.button`
   border-radius: 20px;
   border: none;
   color: white;
-  background-color: ${theme.background.lightBlue};
+  background-color: ${theme.colors.gray};
   height: 4.5rem;
   width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
   gap: 0.5rem;
   &:hover {
-    background: ${theme.colors.blue2};
+    background: ${theme.colors.yellow};
   }
+`
+
+const My_Div = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
 `

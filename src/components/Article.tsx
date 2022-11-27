@@ -1,21 +1,24 @@
 import { ArticleData } from './Application'
 import { theme } from '../helpers/theme'
 import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import moment from 'moment'
+import styled, { css, keyframes } from 'styled-components'
 
 type PropsType = {
   articleData: ArticleData
   loading: boolean
+  darkMode: boolean
 }
 
 export const Article = (props: PropsType) => {
+  const { darkMode = true } = props
+  const date = moment(props.articleData.date).format('MMMM Do YYYY, h:mm a')
   let author = props.articleData.author
   let article = props.articleData.text
-  let date = props.articleData.date
   const avatar = require('../helpers/Person Tipping Hand.png')
 
   return (
-    <Div_Wrapper>
+    <Div_Wrapper darkMode={darkMode}>
       <Container>
         {props.loading ? (
           <MessageError>
@@ -29,7 +32,7 @@ export const Article = (props: PropsType) => {
               <Img_AuthorImg src={avatar} alt='avatar' />
               <H1>{author}</H1>
             </Header>
-            <p>{date}</p>
+            <Date>{date}</Date>
             <Body>
               <Post>{article}</Post>
             </Body>
@@ -39,10 +42,29 @@ export const Article = (props: PropsType) => {
     </Div_Wrapper>
   )
 }
+const Div_Wrapper = styled.div<{ darkMode: boolean }>`
+  max-width: 1000px;
+  ${({ darkMode }) =>
+    darkMode
+      ? css`
+          background-color: ${theme.colors.darkGrey};
+        `
+      : css`
+          background-color: ${theme.colors.superWhite};
+        `}
+  box-shadow: ${theme.colors.boxShadow}
+  border-radius: 20px;
+  margin: 0 auto;
+  width: 90%;
+  padding: 2rem 0;
+  gap: 1rem;
+  ${theme.breakpoint.phone} {
+    width: 90%;
+  }
+`
 
 const Content = styled.div`
   margin: 0;
-  padding: 10px;
   width: 80%;
   ${theme.breakpoint.phone} {
     width: 90%;
@@ -55,19 +77,6 @@ const Body = styled.div`
   flex-direction: column;
 `
 
-const Div_Wrapper = styled.div`
-  max-width: 1000px;
-  background-color: ${theme.colors.superWhite};
-  box-shadow: ${theme.colors.boxShadow4}
-  border-radius: 20px;
-  margin: 0 auto;
-  width: 90%;
-  padding: 2rem 0;
-  gap: 1rem;
-  ${theme.breakpoint.phone} {
-    width: 90%;
-  }
-`
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -78,7 +87,6 @@ const H1 = styled.h1`
   max-width: 700px;
   word-break: break-all;
   text-align: start;
-  color: ${theme.colors.black};
 `
 const Header = styled.header`
   display: flex;
@@ -94,7 +102,6 @@ const Post = styled.div`
   margin-top: 1.5rem;
   font-size: ${theme.fonts.medium};
   word-break: break-all;
-  color: ${theme.colors.black};
 `
 
 const Img_AuthorImg = styled.img`
@@ -143,4 +150,8 @@ const Loading = styled.span`
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
+`
+const Date = styled.div`
+  font-size: ${theme.fonts.xxs};
+  color: darkgrey;
 `

@@ -7,13 +7,17 @@
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/0.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/1.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/10.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/10.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/10.pack_" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/11.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/11.pack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/11.pack_" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/12.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/12.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/13.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/13.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/14.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/14.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/15.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/15.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/16.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/16.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/17.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/17.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/18.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/18.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/19.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/19.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/2.pack" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/20.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/20.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/3.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/4.pack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.cache/default-development/5.pack" afterDir="false" />
@@ -27,8 +31,13 @@
       <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Application.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Application.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Article.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Article.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Comment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Comment.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/globalStyle.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helpers/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpers/theme.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,8 +47,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -52,23 +61,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Artem/Documents/React/whys test/src/helpers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Artem\\Documents\\React\\whys test\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Artem\\Documents\\React\\whys test\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Artem/Documents/React/whys test/src/helpers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Artem\\Documents\\React\\whys test\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors",
+    "ts.external.directory.path": "C:\\Users\\Artem\\Documents\\React\\whys test\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Artem\Documents\React\whys test\src\helpers" />
@@ -78,6 +87,7 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Artem\Documents\React\whys test\src\helpers" />
       <recent name="C:\Users\Artem\Documents\React\whys test\src" />
+      <recent name="C:\Users\Artem\Documents\React\whys test\public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -91,7 +101,7 @@
       <workItem from="1669138786292" duration="699000" />
       <workItem from="1669140958989" duration="544000" />
       <workItem from="1669141821921" duration="28023000" />
-      <workItem from="1669380442098" duration="12899000" />
+      <workItem from="1669380442098" duration="44833000" />
     </task>
     <servers />
   </component>

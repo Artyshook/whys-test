@@ -1,22 +1,50 @@
 import { CommentData } from './Application'
 import { theme } from '../helpers/theme'
 import React from 'react'
-import styled from 'styled-components'
+import moment from 'moment'
+import styled, { css } from 'styled-components'
 
 type PropsType = {
   commentData: CommentData
+  darkMode: boolean
 }
 
 export const Comment = (props: PropsType) => {
+  const { darkMode = true } = props
+
+  const avatar = require('../helpers/Lion.png')
+  const date = moment(props.commentData.date).format('MMMM Do YYYY, h:mm a')
   return (
-    <Div_Wrapper>
+    <Wrapper darkMode={darkMode}>
+      <Header>
+        <UserInfo>
+          <Img_AuthorImg src={avatar} alt='avatar' />
+          <UserName>{props.commentData.author}</UserName>
+        </UserInfo>
+        <Date>{date}</Date>
+      </Header>
       <Container>
         <Post>{props.commentData.text}</Post>
       </Container>
-    </Div_Wrapper>
+    </Wrapper>
   )
 }
 
+const UserInfo = styled.div`
+  display: flex;
+  justify-content: normal;
+  align-items: end;
+  flex-direction: row;
+  padding-left: 10px;
+  gap: 0.5rem;
+`
+const UserName = styled.div`
+  font-size: ${theme.fonts.xs};
+`
+const Date = styled.div`
+  font-size: ${theme.fonts.xxs};
+  color: darkgrey;
+`
 const Content = styled.div`
   margin: 0;
   padding: 10px;
@@ -25,22 +53,23 @@ const Content = styled.div`
     width: 90%;
   }
 `
-const Body = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`
 
-const Div_Wrapper = styled.div`
+const Wrapper = styled.div<{ darkMode: boolean }>`
   max-width: 1000px;
-  background-color: ${theme.colors.superWhite};
-  box-shadow: ${theme.colors.boxShadow4}
+  ${({ darkMode }) =>
+    darkMode
+      ? css`
+          background-color: ${theme.colors.darkGrey};
+        `
+      : css`
+          background-color: ${theme.colors.superWhite};
+        `}
+
+  box-shadow: ${theme.colors.boxShadow}
   border-radius: 20px;
   margin: 10px auto;
   width: 90%;
   padding: 1rem 0;
-  gap: 1rem;
   ${theme.breakpoint.phone} {
     width: 90%;
   }
@@ -51,27 +80,18 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
 `
-const H1 = styled.h1`
-  max-width: 700px;
-  word-break: break-all;
-  text-align: start;
-  color: ${theme.colors.black};
-`
 const Header = styled.header`
   display: flex;
   flex-direction: row;
-  align-items: normal;
-  justify-content: start;
-  font-size: 10px;
-  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
 `
 
 const Post = styled.div`
   text-align: left;
-  margin-top: 1.5rem;
-  font-size: ${theme.fonts.small};
+  font-size: ${theme.fonts.xs};
   word-break: break-all;
-  color: ${theme.colors.black};
 `
 
 const Img_AuthorImg = styled.img`
