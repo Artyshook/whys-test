@@ -3,7 +3,7 @@
 
 ## How to start
 ```sh
-git clone 
+git clone https://github.com/Artyshook/whysTest.git
 npm i
 npm run start
 ```
