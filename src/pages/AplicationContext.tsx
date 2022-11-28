@@ -38,7 +38,7 @@ const useLogicState = () => {
         setMoreCommentData(data.moreComments)
         setLoading(false)
       }
-    }, 1000)
+    }, 1500)
   }, [])
 
   useStartAnimation(inView, animation)
