@@ -1,25 +1,19 @@
 import './App.css'
-import { AppUseContext } from './components/Application'
+import { AppUseContext } from './pages/AplicationContext'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { createGlobalStyle } from 'styled-components'
 import { theme } from './helpers/theme'
 
 function App() {
   return (
-    <HelmetProvider>
-      <div>
-        <Helmet>
-          <script src='./app.html' type='text/javascript' async></script>
-        </Helmet>
-        <GlobalStyle />
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<AppUseContext />} />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </HelmetProvider>
+    <div>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<AppUseContext />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 

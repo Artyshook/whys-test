@@ -1,7 +1,5 @@
 import { AnimationControls } from 'framer-motion'
-import { Comment } from '../components/Comment'
-import { Grid } from '@mui/material'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
 const animationOptions = {
   y: 0,

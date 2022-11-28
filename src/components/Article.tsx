@@ -1,4 +1,4 @@
-import { ArticleData } from './Application'
+import { ArticleData } from '../pages/AplicationContext'
 import { theme } from '../helpers/theme'
 import React from 'react'
 import moment from 'moment'
@@ -11,14 +11,13 @@ type PropsType = {
 }
 
 export const Article = (props: PropsType) => {
-  const { darkMode = true } = props
   const date = moment(props.articleData.date).format('MMMM Do YYYY, h:mm a')
   let author = props.articleData.author
   let article = props.articleData.text
-  const avatar = require('../helpers/Person Tipping Hand.png')
+  const avatar = require('../helpers/icons/Person Tipping Hand.png')
 
   return (
-    <Div_Wrapper darkMode={darkMode}>
+    <Div_Wrapper darkMode={props.darkMode}>
       <Container>
         {props.loading ? (
           <MessageError>
@@ -29,7 +28,7 @@ export const Article = (props: PropsType) => {
         ) : (
           <Content>
             <Header>
-              <Img_AuthorImg src={avatar} alt='avatar' />
+              <AuthorImg src={avatar} alt='avatar' />
               <H1>{author}</H1>
             </Header>
             <Date>{date}</Date>
@@ -55,7 +54,6 @@ const Div_Wrapper = styled.div<{ darkMode: boolean }>`
   box-shadow: ${theme.colors.boxShadow}
   border-radius: 20px;
   margin: 0 auto;
-  width: 90%;
   padding: 2rem 0;
   gap: 1rem;
   ${theme.breakpoint.phone} {
@@ -101,10 +99,10 @@ const Post = styled.div`
   text-align: left;
   margin-top: 1.5rem;
   font-size: ${theme.fonts.medium};
-  word-break: break-all;
+  word-break: break-word;
 `
 
-const Img_AuthorImg = styled.img`
+const AuthorImg = styled.img`
   max-height: 35px;
   max-width: 35px;
   border-radius: 40px;

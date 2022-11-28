@@ -1,4 +1,4 @@
-import { CommentData } from './Application'
+import { CommentData } from '../pages/AplicationContext'
 import { theme } from '../helpers/theme'
 import React from 'react'
 import moment from 'moment'
@@ -10,15 +10,13 @@ type PropsType = {
 }
 
 export const Comment = (props: PropsType) => {
-  const { darkMode = true } = props
-
-  const avatar = require('../helpers/Lion.png')
+  const avatar = require('../helpers/icons/Lion.png')
   const date = moment(props.commentData.date).format('MMMM Do YYYY, h:mm a')
   return (
-    <Wrapper darkMode={darkMode}>
+    <Wrapper darkMode={props.darkMode}>
       <Header>
         <UserInfo>
-          <Img_AuthorImg src={avatar} alt='avatar' />
+          <AuthorImg src={avatar} alt='avatar' />
           <UserName>{props.commentData.author}</UserName>
         </UserInfo>
         <Date>{date}</Date>
@@ -45,14 +43,6 @@ const Date = styled.div`
   font-size: ${theme.fonts.xxs};
   color: darkgrey;
 `
-const Content = styled.div`
-  margin: 0;
-  padding: 10px;
-  width: 80%;
-  ${theme.breakpoint.phone} {
-    width: 90%;
-  }
-`
 
 const Wrapper = styled.div<{ darkMode: boolean }>`
   max-width: 1000px;
@@ -68,7 +58,6 @@ const Wrapper = styled.div<{ darkMode: boolean }>`
   box-shadow: ${theme.colors.boxShadow}
   border-radius: 20px;
   margin: 10px auto;
-  width: 90%;
   padding: 1rem 0;
   ${theme.breakpoint.phone} {
     width: 90%;
@@ -94,7 +83,7 @@ const Post = styled.div`
   word-break: break-all;
 `
 
-const Img_AuthorImg = styled.img`
+const AuthorImg = styled.img`
   max-height: 35px;
   max-width: 35px;
   border-radius: 40px;

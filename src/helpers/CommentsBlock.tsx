@@ -1,6 +1,7 @@
 import { Comment } from '../components/Comment'
-import { CommentData } from '../components/Application'
+import { CommentData } from '../pages/AplicationContext'
 import { Grid } from '@mui/material'
+import { theme } from './theme'
 import React from 'react'
 
 type CommentsJSX = {
