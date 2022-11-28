@@ -36,9 +36,9 @@ const BoxWrapper = styled(Box)`
   justify-content: right;
   align-items: center;
   text-transform: lowercase;
-  font-size: 1.5rem;
+  font-size: ${theme.fonts.small};
   list-style-type: none;
   ${theme.breakpoint.phone} {
-    font-size: 1.3rem;
+    font-size: ${theme.fonts.xxs};
   }
 `

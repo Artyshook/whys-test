@@ -76,7 +76,7 @@ const Container = styled(Box)<{ darkMode: boolean }>`
   }
 `
 export const MyButton = styled.button<{ darkMode: boolean }>`
-  font-size: 1.5rem;
+  font-size: ${theme.fonts.small};
   border-radius: 20px;
   border: none;
   background-color: ${props => (props.darkMode ? theme.colors.darkGrey : theme.colors.superWhite)};
